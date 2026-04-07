@@ -1,0 +1,47 @@
+Đặc tả Yêu cầu Phần mềm (SRS) - StudentHub
+Tên dự án: StudentHub — Hệ thống Quản lý Sinh viên
+Phiên bản: 1.0 (Dành cho học phần làm quen Spring MVC)
+I. Giới thiệu
+Khoa Công nghệ Thông tin cần một công cụ nội bộ để theo dõi danh sách sinh viên và báo cáo kết quả học tập một cách nhanh chóng. Thay vì sử dụng các file Excel rời rạc, sinh viên sẽ xây dựng một ứng dụng web tập trung vào việc hiển thị dữ liệu một cách chuyên nghiệp, cho phép lọc, sắp xếp và thống kê tình hình học tập toàn khoa dựa trên dữ liệu có sẵn.
+II. Mục tiêu Dự án
+Xây dựng ứng dụng web hiển thị và báo cáo dữ liệu sinh viên.
+Nắm vững cách điều hướng và truyền dữ liệu thông qua URL.
+Thực hành xử lý logic tại Service và hiển thị động bằng JSTL.
+Dữ liệu được khởi tạo sẵn (Hardcoded) trong Repository, đại diện cho chính các thành viên trong nhóm thực hiện.
+III. Các Yêu cầu Chức năng (Revised)
+UC-01: Xem danh sách & Sắp xếp sinh viên
+Mô tả: Hiển thị toàn bộ sinh viên dưới dạng bảng.
+Chức năng Sắp xếp (Yêu cầu mới): Người dùng có thể sắp xếp danh sách thông qua các đường dẫn (Link) trên tiêu đề cột hoặc nút bấm:
+/students?sortBy=name: Sắp xếp theo tên từ A-Z.
+/students?sortBy=gpa: Sắp xếp theo điểm trung bình từ cao xuống thấp.
+Yêu cầu hiển thị:
+Bảng có cột: STT (tự động), Mã SV, Họ tên, Khoa, Năm nhập học, GPA, Trạng thái.
+Màu sắc trạng thái: Đang học (Xanh lá), Bảo lưu (Cam), Tốt nghiệp (Xanh dương).
+UC-02: Xem chi tiết sinh viên
+Mô tả: Xem đầy đủ thông tin của một sinh viên cụ thể.
+Yêu cầu: * Truy cập qua URL: /students/detail?id=...
+Hiển thị tất cả thuộc tính của Model Student.
+Có nút "Quay lại danh sách".
+UC-03: Tìm kiếm/Lọc sinh viên qua URL
+Mô tả: Lọc danh sách sinh viên dựa trên từ khóa truyền trực tiếp lên thanh địa chỉ.
+Yêu cầu: * URL mẫu: /students?search=Nguyen hoặc/students?faculty=CNTT.
+Hệ thống sẽ lọc các sinh viên có tên chứa từ khóa hoặc thuộc khoa tương ứng.
+Hiển thị thông báo: "Tìm thấy [N] sinh viên phù hợp".
+UC-04: Trang Báo cáo Tổng quan (Dashboard)
+Mô tả: Thống kê dữ liệu dựa trên danh sách sinh viên hiện có.
+Các chỉ số cần tính (tại tầng Service):
+Tổng số sinh viên trong nhóm.
+Tỷ lệ % sinh viên theo trạng thái.
+GPA trung bình của toàn nhóm.
+Xác định "Thủ khoa" của nhóm (người có GPA cao nhất).
+IV. Mô hình Dữ liệu & Khởi tạo (Data Seeding)
+1. Cấu trúc Model Student
+Giữ nguyên các thuộc tính như phiên bản 1.0: id, fullName, studentCode, faculty, enrollmentYear, gpa, status.
+2. Dữ liệu mẫu (Tầng Repository)
+Sinh viên phải khởi tạo một List<Student> trong hàm khởi tạo (Constructor) của Repository.
+Lưu ý: Dữ liệu phải bao gồm đầy đủ thông tin của các thành viên trong nhóm thực hiện dự án để giảng viên dễ đối chiếu.
+V. Ràng Buộc Kỹ thuật (Giữ nguyên)
+Framework: Spring MVC thuần (Config bằng Java hoặc XML, không dùng Spring Boot).
+Application Server: Apache Tomcat 10.x (Jakarta EE).
+Tầng View: JSP + JSTL + EL.
+Phân tầng: Bắt buộc tuân thủ 4 tầng: Configuration, Controller, Service, Repository.

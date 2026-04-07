@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/src/main/java/com/session02/Ex01/phanTich.md">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/src/main/java/com/session02/Ex01/phanTich.md" />
+              <option name="originalContent" value="1. Lỗi trong MyWebAppInitializer.java&#10;   return new String[] { &quot;/api/*&quot; };&#10;   ❌ Vấn đề:&#10;&#10;DispatcherServlet chỉ xử lý request có dạng:&#10;&#10;/api/...&#10; Nhưng bạn gọi:&#10;http://localhost:8080/demo/welcome&#10;&#10;→ URL này KHÔNG match /api/*&#10;→ DispatcherServlet không nhận request&#10;→ Tomcat trả về 404 Not Found&#10;&#10;✅ Kết luận:&#10;&#10;DispatcherServlet đang nghe:&#10;&#10;/demo/api/*&#10;&#10;Không phải:&#10;&#10;/demo/*&#10;2. Lỗi trong WebConfig.java&#10;   @ComponentScan(basePackages = &quot;com.demo.service&quot;)&#10;   ❌ Vấn đề:&#10;&#10;Spring chỉ scan trong package:&#10;&#10;com.demo.service&#10;&#10;Trong khi Controller nằm ở:&#10;&#10;com.demo.controller&#10; Hậu quả:&#10;Spring KHÔNG tìm thấy @Controller&#10;Không có bean WelcomeController&#10;Không mapping /welcome&#10; Kết quả:&#10;&#10;→ Dù mapping đúng → vẫn lỗi&#10;→ Vì không có controller để xử lý request&#10;&#10;3. Nếu chỉ sửa lỗi 1 (Servlet Mapping) thì sao?&#10;   ✔ Sửa:&#10;   &quot;/&quot;&#10;   ❗ Nhưng KHÔNG sửa ComponentScan&#10;&#10; Kết quả:&#10;&#10;Request vào được DispatcherServlet ✅&#10;Nhưng:&#10;Không tìm thấy Controller ❌&#10; Kết luận:&#10;&#10;Ứng dụng VẪN KHÔNG chạy&#10;&#10;→ vì:&#10;&#10;No mapping found for HTTP request" />
+              <option name="updatedContent" value="# Phân tích lỗi Spring MVC cấu hình DispatcherServlet &amp; ComponentScan&#10;&#10;---&#10;&#10;## 1. Lỗi trong `MyWebAppInitializer.java`&#10;&#10;```java&#10;return new String[] { &quot;/api/*&quot; };&#10;```&#10;&#10;❌ **Vấn đề:**&#10;- `DispatcherServlet` chỉ xử lý request có dạng `/api/...`&#10;- Nhưng bạn gọi: `http://localhost:8080/demo/welcome`&#10;- URL này **KHÔNG match** `/api/*` → `DispatcherServlet` không nhận request → Tomcat trả về **404 Not Found**&#10;&#10;**Kết luận:**&#10;- `DispatcherServlet` đang nghe: `/demo/api/*`&#10;- Không phải: `/demo/*`&#10;&#10;---&#10;&#10;## 2. Lỗi trong `WebConfig.java`&#10;&#10;```java&#10;@ComponentScan(basePackages = &quot;com.demo.service&quot;)&#10;```&#10;&#10;❌ **Vấn đề:**&#10;- Spring chỉ scan trong package: `com.demo.service`&#10;- Trong khi Controller nằm ở: `com.demo.controller`&#10;&#10;**Hậu quả:**&#10;- Spring **KHÔNG** tìm thấy `@Controller`&#10;- Không có bean `WelcomeController`&#10;- Không mapping `/welcome`&#10;&#10;**Kết quả:**&#10;- Dù mapping đúng → vẫn lỗi&#10;- Vì không có controller để xử lý request&#10;&#10;---&#10;&#10;## 3. Nếu chỉ sửa lỗi 1 (Servlet Mapping) thì sao?&#10;&#10;✔ **Sửa:**&#10;```java&#10;&quot;/&quot;&#10;```&#10;❗ Nhưng **KHÔNG sửa** `ComponentScan`&#10;&#10;**Kết quả:**&#10;- Request vào được `DispatcherServlet` ✅&#10;- Nhưng: Không tìm thấy Controller ❌&#10;&#10;**Kết luận:**&#10;- Ứng dụng **VẪN KHÔNG chạy**&#10;- Vì: `No mapping found for HTTP request`" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
