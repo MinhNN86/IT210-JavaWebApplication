@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Smart Order</title>
+</head>
+<body>
+
+<h1>🍽️ Đặt món nhanh</h1>
+
+<table border="1">
+  <tr>
+    <th>Tên</th>
+    <th>Giá</th>
+  </tr>
+
+  <!-- mock data khi mở file -->
+  <tr>
+    <td>Phở bò</td>
+    <td>50000</td>
+  </tr>
+
+  <!-- thymeleaf -->
+  <tr th:each="d : ${dishes}">
+    <td th:text="${d.name}">Tên món</td>
+    <td th:text="${d.price}">0</td>
+  </tr>
+</table>
+
+<h3>
+  Tổng tiền:
+  <span th:text="${total}">0</span>
+</h3>
+
+</body>
+</html>
