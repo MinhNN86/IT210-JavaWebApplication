@@ -1,0 +1,21 @@
+<form action="/restaurant/update" method="post">
+
+  <!-- Tên cửa hàng -->
+  <label>Tên cửa hàng:</label>
+  <input type="text" name="restaurantName" />
+
+  <!-- Số điện thoại -->
+  <label>Số điện thoại:</label>
+  <input type="text" name="phoneNumber" />
+
+  <!-- Trạng thái -->
+  <label>Đang mở cửa:</label>
+
+  <!-- hidden để xử lý false -->
+  <input type="hidden" name="active" value="false" />
+
+  <!-- checkbox -->
+  <input type="checkbox" name="active" value="true" />
+
+  <button type="submit">Lưu</button>
+</form>
